@@ -6,20 +6,28 @@ va applicato uno sconto del 40% per gli over 65.
 L'output del prezzo finale va messo fuori in forma umana (con massimo due decimali, per indicare centesimi sul prezzo). 
 Questo richiederà un minimo di ricerca. */
 
-let km = parseInt(prompt ("Inserisci il numero di km da percorrere:"));
-let age = parseInt(prompt ("Inserisci l'età del passeggero:"));
-let tariffa = 0.21;
+const km = parseInt(prompt("Inserisci il numero di km da percorrere:"));
+const age = parseInt(prompt("Inserisci l'età del passeggero:"));
+let prezzo_scontato = 0;
+let Prezzo_finale;
+let Prezzo_biglietto = (km * 0.21);
 
-if ('age' < 18) {
-  'Prezzo_totale_biglietto' = 'km' * ('tariffa' - ('tariffa' * 20/100));
-} else if ('age' > 65) {
-    'Prezzo_totale_biglietto' = 'km' * ('tariffa' - ('tariffa' * 40/100));
+/* Discounts Calculation */
+
+if (age < 18) {
+    prezzo_scontato = ((20 / 100) * Prezzo_biglietto);
+    Prezzo_finale = (Prezzo_biglietto - prezzo_scontato);
+} else if (age > 65) {
+    prezzo_scontato = ((40 / 100) * Prezzo_biglietto);
+    Prezzo_finale = (Prezzo_biglietto - prezzo_scontato);
 } else {
-    'Prezzo_totale_biglietto' = ('km' * 'tariffa');
+   Prezzo_finale = Prezzo_biglietto;
 }
-let Prezzo_totale_biglietto = `
 
-<p> 'Prezzo_totale_biglietto' </p>
+Prezzo_biglietto = Prezzo_biglietto.toFixed(2)
+Prezzo_finale = Prezzo_finale.toFixed(2);
 
-`
-document.getElementById('title').innerHTML = Prezzo_totale_biglietto
+
+
+
+document.getElementById('title').innerHTML = Prezzo_finale
