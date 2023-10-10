@@ -10,15 +10,19 @@ const km = parseInt(prompt("Inserisci il numero di km da percorrere:"));
 const age = parseInt(prompt("Inserisci l'età del passeggero:"));
 let prezzo_scontato = 0;
 let Prezzo_finale;
+const discountUnder18 = 20/100;
+const discountOver65 = 40/100;
 let Prezzo_biglietto = (km * 0.21);
 
-/* Discounts Calculation */
+if(isNaN(km) || isNaN(age)) {
+    location.reload();
+}
 
 if (age < 18) {
-    prezzo_scontato = ((20 / 100) * Prezzo_biglietto);
+    prezzo_scontato = (Prezzo_biglietto * discountUnder18);
     Prezzo_finale = (Prezzo_biglietto - prezzo_scontato);
 } else if (age > 65) {
-    prezzo_scontato = ((40 / 100) * Prezzo_biglietto);
+    prezzo_scontato = (Prezzo_biglietto * discountOver65);
     Prezzo_finale = (Prezzo_biglietto - prezzo_scontato);
 } else {
    Prezzo_finale = Prezzo_biglietto;
@@ -30,4 +34,4 @@ Prezzo_finale = Prezzo_finale.toFixed(2);
 
 
 
-document.getElementById('title').innerHTML = Prezzo_finale
+document.getElementById('title').innerHTML = Prezzo_finale + '€'
